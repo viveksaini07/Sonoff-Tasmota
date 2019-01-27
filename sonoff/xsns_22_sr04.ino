@@ -43,12 +43,12 @@ void Sr04Init(void)
 
 #ifdef USE_WEBSERVER
 const char HTTP_SNS_DISTANCE[] PROGMEM =
-  "%s{s}SR04 " D_DISTANCE "{m}%s" D_UNIT_CENTIMETER "{e}";  // {s} = <tr><th>, {m} = </th><td>, {e} = </td></tr>
+  "%s{s}SR04 " D_DISTANCE "{m}%s " D_UNIT_INCH "{e}";  // {s} = <tr><th>, {m} = </th><td>, {e} = </td></tr>
 #endif  // USE_WEBSERVER
 
 void Sr04Show(boolean json)
 {
-  distance = (real64_t)(sonar->ping_median(5))/ US_ROUNDTRIP_CM;
+  distance = (real64_t)(sonar->ping_median(5))/ US_ROUNDTRIP_IN;
 
   if (distance != 0) {                // Check if read failed
     char distance_chr[33];

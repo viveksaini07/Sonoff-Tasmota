@@ -544,6 +544,7 @@
 // Units
 #define D_UNIT_AMPERE "A"
 #define D_UNIT_CENTIMETER "cm"
+#define D_UNIT_INCH "inches"
 #define D_UNIT_HERTZ "Hz"
 #define D_UNIT_HOUR "Hr"
 #define D_UNIT_INCREMENTS "inc"

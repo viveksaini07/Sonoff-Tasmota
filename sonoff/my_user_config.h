@@ -36,7 +36,7 @@
  * Users are advised to use the user_config_override.h file for most changes.
 \*********************************************************************************************/
 
-//#define USE_CONFIG_OVERRIDE                      // Uncomment to use user_config_override.h file. See README.md
+#define USE_CONFIG_OVERRIDE                      // Uncomment to use user_config_override.h file. See README.md
 
 /*********************************************************************************************\
  * SECTION 1
@@ -74,9 +74,9 @@
                                                  //   *** NOTE: When WIFI_SMARTCONFIG is disabled by USE_SMARTCONFIG below, WIFI_SMARTCONFIG will execute WIFI_SERIAL ***
 
 // -- Syslog --------------------------------------
-#define SYS_LOG_HOST           ""                // [LogHost] (Linux) syslog host
+#define SYS_LOG_HOST           "192.168.1.138"                // [LogHost] (Linux) syslog host
 #define SYS_LOG_PORT           514               // [LogPort] default syslog UDP port
-#define SYS_LOG_LEVEL          LOG_LEVEL_NONE    // [SysLog] (LOG_LEVEL_NONE, LOG_LEVEL_ERROR, LOG_LEVEL_INFO, LOG_LEVEL_DEBUG, LOG_LEVEL_DEBUG_MORE)
+#define SYS_LOG_LEVEL          LOG_LEVEL_DEBUG_MORE    // [SysLog] (LOG_LEVEL_NONE, LOG_LEVEL_ERROR, LOG_LEVEL_INFO, LOG_LEVEL_DEBUG, LOG_LEVEL_DEBUG_MORE)
 #define SERIAL_LOG_LEVEL       LOG_LEVEL_INFO    // [SerialLog] (LOG_LEVEL_NONE, LOG_LEVEL_ERROR, LOG_LEVEL_INFO, LOG_LEVEL_DEBUG, LOG_LEVEL_DEBUG_MORE)
 #define WEB_LOG_LEVEL          LOG_LEVEL_INFO    // [WebLog] (LOG_LEVEL_NONE, LOG_LEVEL_ERROR, LOG_LEVEL_INFO, LOG_LEVEL_DEBUG, LOG_LEVEL_DEBUG_MORE)
 
@@ -93,12 +93,12 @@
 #define MQTT_USER              "DVES_USER"       // [MqttUser] MQTT user
 #define MQTT_PASS              "DVES_PASS"       // [MqttPassword] MQTT password
 
-#define MQTT_BUTTON_RETAIN     0                 // [ButtonRetain] Button may send retain flag (0 = off, 1 = on)
-#define MQTT_POWER_RETAIN      0                 // [PowerRetain] Power status message may send retain flag (0 = off, 1 = on)
-#define MQTT_SWITCH_RETAIN     0                 // [SwitchRetain] Switch may send retain flag (0 = off, 1 = on)
+#define MQTT_BUTTON_RETAIN     1                 // [ButtonRetain] Button may send retain flag (0 = off, 1 = on)
+#define MQTT_POWER_RETAIN      1                 // [PowerRetain] Power status message may send retain flag (0 = off, 1 = on)
+#define MQTT_SWITCH_RETAIN     1                 // [SwitchRetain] Switch may send retain flag (0 = off, 1 = on)
 #define MQTT_BUTTON_SWITCH_FORCE_LOCAL     0     // [SetOption61] Force local operation when button/switch topic is set (0 = off, 1 = on)
 
-#define MQTT_STATUS_OFF        "OFF"             // [StateText1] Command or Status result when turned off (needs to be a string like "0" or "Off")
+#define MQTT_STATUS_OFF        "ON"             // [StateText1] Command or Status result when turned off (needs to be a string like "0" or "Off")
 #define MQTT_STATUS_ON         "ON"              // [StateText2] Command or Status result when turned on (needs to be a string like "1" or "On")
 #define MQTT_CMND_TOGGLE       "TOGGLE"          // [StateText3] Command to send when toggling (needs to be a string like "2" or "Toggle")
 #define MQTT_CMND_HOLD         "HOLD"            // [StateText4] Command to send when button is kept down for over KEY_HOLD_TIME * 0.1 seconds (needs to be a string like "HOLD")
@@ -120,7 +120,7 @@
 #define MQTT_CLIENT_ID         "DVES_%06X"       // [MqttClient] Also fall back topic using Chip Id = last 6 characters of MAC address
 
 // -- MQTT - Telemetry ----------------------------
-#define TELE_PERIOD            300               // [TelePeriod] Telemetry (0 = disable, 10 - 3600 seconds)
+#define TELE_PERIOD            10               // [TelePeriod] Telemetry (0 = disable, 10 - 3600 seconds)
 
 // -- MQTT - Domoticz -----------------------------
 #define DOMOTICZ_UPDATE_TIMER  0                 // [DomoticzUpdateTimer] Send relay status (0 = disable, 1 - 3600 seconds)
@@ -145,7 +145,7 @@
 #define TIME_DST_DAY           Sun               // Day of week (1 or Sun, 2 or Mon, 3 or Tue, 4 or Wed, 5 or Thu, 6 or Fri, 7 or Sat)
 #define TIME_DST_MONTH         Mar               // Month (1 or Jan, 2 or Feb, 3 or Mar, 4 or Apr, 5 or May, 6 or Jun, 7 or Jul, 8 or Aug, 9 or Sep, 10 or Oct, 11 or Nov, 12 or Dec)
 #define TIME_DST_HOUR          2                 // Hour (0 to 23)
-#define TIME_DST_OFFSET        +120              // Offset from UTC in minutes (-780 to +780)
+#define TIME_DST_OFFSET        -420              // Offset from UTC in minutes (-780 to +780)
 
 // -- Time - Start Standard Time and timezone offset from UTC in minutes
 #define TIME_STD_HEMISPHERE    North             // [TimeStd] Hemisphere (0 or North, 1 or South)
@@ -153,14 +153,14 @@
 #define TIME_STD_DAY           Sun               // Day of week (1 or Sun, 2 or Mon, 3 or Tue, 4 or Wed, 5 or Thu, 6 or Fri, 7 or Sat)
 #define TIME_STD_MONTH         Oct               // Month (1 or Jan, 2 or Feb, 3 or Mar, 4 or Apr, 5 or May, 6 or Jun, 7 or Jul, 8 or Aug, 9 or Sep, 10 or Oct, 11 or Nov, 12 or Dec)
 #define TIME_STD_HOUR          3                 // Hour (0 to 23)
-#define TIME_STD_OFFSET        +60               // Offset from UTC in minutes (-780 to +780)
+#define TIME_STD_OFFSET        -460               // Offset from UTC in minutes (-780 to +780)
 
 // -- Location ------------------------------------
 #define LATITUDE               48.858360         // [Latitude] Your location to be used with sunrise and sunset
 #define LONGITUDE              2.294442          // [Longitude] Your location to be used with sunrise and sunset
 
 // -- Application ---------------------------------
-#define APP_TIMEZONE           1                 // [Timezone] +1 hour (Amsterdam) (-13 .. 14 = hours from UTC, 99 = use TIME_DST/TIME_STD)
+#define APP_TIMEZONE           -8                 // [Timezone] +1 hour (Amsterdam) (-13 .. 14 = hours from UTC, 99 = use TIME_DST/TIME_STD)
 #define APP_LEDSTATE           LED_POWER         // [LedState] Function of led
                                                  //   (LED_OFF, LED_POWER, LED_MQTTSUB, LED_POWER_MQTTSUB, LED_MQTTPUB, LED_POWER_MQTTPUB, LED_MQTT, LED_POWER_MQTT)
 #define APP_PULSETIME          0                 // [PulseTime] Time in 0.1 Sec to turn off power for relay 1 (0 = disabled)
@@ -235,7 +235,7 @@
 //#define MQTT_LIBRARY_TYPE      MQTT_ARDUINOMQTT    // Use arduino-mqtt (lwmqtt) library (+3k3 code, +2k mem)
 
 // -- MQTT ----------------------------------------
-#define MQTT_TELE_RETAIN     0                   // Tele messages may send retain flag (0 = off, 1 = on)
+#define MQTT_TELE_RETAIN     1                   // Tele messages may send retain flag (0 = off, 1 = on)
 
 // -- MQTT - Domoticz -----------------------------
 #define USE_DOMOTICZ                             // Enable Domoticz (+6k code, +0.3k mem)

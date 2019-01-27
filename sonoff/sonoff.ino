@@ -1169,7 +1169,8 @@ void MqttDataHandler(char* topic, byte* data, unsigned int data_len)
     else if (CMND_TELEPERIOD == command_code) {
       if ((payload >= 0) && (payload < 3601)) {
         Settings.tele_period = (1 == payload) ? TELE_PERIOD : payload;
-        if ((Settings.tele_period > 0) && (Settings.tele_period < 10)) Settings.tele_period = 10;   // Do not allow periods < 10 seconds
+        //if ((Settings.tele_period > 0) && (Settings.tele_period < 10)) Settings.tele_period = 10;   // Do not allow periods < 10 seconds
+        if ((Settings.tele_period > 0) && (Settings.tele_period < 2)) Settings.tele_period = 2;   // Do not allow periods < 2 seconds
         tele_period = Settings.tele_period;
       }
       snprintf_P(mqtt_data, sizeof(mqtt_data), S_JSON_COMMAND_NVALUE_UNIT, command, Settings.tele_period, (Settings.flag.value_units) ? " " D_UNIT_SECOND : "");
