@@ -98,7 +98,7 @@
 #define MQTT_SWITCH_RETAIN     1                 // [SwitchRetain] Switch may send retain flag (0 = off, 1 = on)
 #define MQTT_BUTTON_SWITCH_FORCE_LOCAL     0     // [SetOption61] Force local operation when button/switch topic is set (0 = off, 1 = on)
 
-#define MQTT_STATUS_OFF        "ON"             // [StateText1] Command or Status result when turned off (needs to be a string like "0" or "Off")
+#define MQTT_STATUS_OFF        "OFF"             // [StateText1] Command or Status result when turned off (needs to be a string like "0" or "Off")
 #define MQTT_STATUS_ON         "ON"              // [StateText2] Command or Status result when turned on (needs to be a string like "1" or "On")
 #define MQTT_CMND_TOGGLE       "TOGGLE"          // [StateText3] Command to send when toggling (needs to be a string like "2" or "Toggle")
 #define MQTT_CMND_HOLD         "HOLD"            // [StateText4] Command to send when button is kept down for over KEY_HOLD_TIME * 0.1 seconds (needs to be a string like "HOLD")
